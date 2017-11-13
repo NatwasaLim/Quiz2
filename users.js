@@ -36,7 +36,7 @@ function search(req, res) {
 
 function sLastname(req, res) {
     var last_name = req.param('last_name');
-        var query ={last_name:  last_name};
+        var query ={last_name: last_name};
     console.log(query);
     MongoClient.connect(url, function (err, db) {
         // if (err) throw err;
@@ -53,7 +53,7 @@ function sLastname(req, res) {
 
 function role(req, res) {
     var role = req.params.role;
-   
+
       var query = { role: new RegExp('.*' + role + '.*') };
       db.collection("users").find(query).toArray(function (err, result) {
         if (err) throw err;

@@ -12,7 +12,7 @@ MongoClient.connect(url, function(err, db) {
     {"id": 6, "first_name": "Betty","last_name": "Valley","expired": false, "role": "user"},
     {"id": 7, "first_name": "Richard","last_name": "Mountain","expired": false, "role": "user"},
     {"id": 8,"first_name": "Susan","last_name": "Apple","expired": false, "role": "admin"},
-    {"id": 9,"first_name": "Ben","last_name": "Sideway ","expired": false, "role": "admin"},
+    {"id": 9,"first_name": "Ben","last_name": "Sideway","expired": false, "role": "admin"},
     {"id": 10,"first_name": "William","last_name": "Main Road","expired": false, "role": "admin"},
   ];
   db.collection("users").insertMany(myobj, function(err, res) {
