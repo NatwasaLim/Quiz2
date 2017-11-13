@@ -16,6 +16,7 @@ app.use(express.static('www'))
 app.get('/users',users.findAll);
 
 app.get('/users/search',users.search);
+app.get('/users/sLastname',users.sLastname);
 
 app.get('/users/role/:role',users.role);
 
