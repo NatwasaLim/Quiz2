@@ -12,7 +12,12 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(logger);
 app.use(express.static('www'))
+
 app.get('/users',users.findAll);
+
+app.get('/users/search',users.search);
+
+app.get('/users/role/:role',users.role);
 
 app.listen(3000);
 console.log('Server is running at http://localhost:3000');

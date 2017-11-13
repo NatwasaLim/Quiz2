@@ -10,16 +10,48 @@ MongoClient.connect(url, function (err, database) {
 
 function findAll(req, res) {
     //Get data from mogodb
-        var query = {};
+    var query = {};
+    db.collection("users").find(query).toArray(function (err, result) {
+        if (err) throw err;
+        console.log(result);
+        res.json(result);
+    });
+}
+
+function search(req, res) {
+    var fname = req.query.fname;
+    console.log(fname);
+    MongoClient.connect(url, function (err, db) {
+        if (err) throw err;
+        var query = { first_name: new RegExp('.*' + fname + '.*') };
+        console.log(query);
         db.collection("users").find(query).toArray(function (err, result) {
             if (err) throw err;
             console.log(result);
+            db.close();
             res.json(result);
         });
+    });
+}
 
+function role(req, res) {
+    var role = req.params.role;
+    // MongoClient.connect(url, function (err, db) {
+        // MongoClient.connect(url, function (err, db) {
+    //   if (err) throw err;
+      var query = { role: new RegExp('.*' + role + '.*') };
+      db.collection("users").find(query).toArray(function (err, result) {
+        if (err) throw err;
+        console.log(result);
+        db.close();
+        res.json(result);
+      });
+    // });
+//   });
 }
 
 module.exports = {
-    findAll: findAll
-
+    findAll: findAll,
+    search: search,
+    role:role
 };
